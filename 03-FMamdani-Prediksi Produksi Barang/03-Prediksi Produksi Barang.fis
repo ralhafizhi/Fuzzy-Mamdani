@@ -1,0 +1,39 @@
+[System]
+Name='03-Prediksi Produksi Barang'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='PERMINTAAN'
+Range=[0 6000]
+NumMFs=2
+MF1='SEDIKIT':'trapmf',[0 0 1000 5000]
+MF2='BANYAK':'trapmf',[1000 5000 6000 6000]
+
+[Input2]
+Name='PERSEDIAAN'
+Range=[0 700]
+NumMFs=2
+MF1='SEDIKIT':'trapmf',[0 0 100 600]
+MF2='BANYAK':'trapmf',[100 600 700 700]
+
+[Output1]
+Name='PRODUKSI'
+Range=[0 8273]
+NumMFs=2
+MF1='BERKURANG':'trapmf',[0 0 2000 7000]
+MF2='BERTAMBAH':'trapmf',[2000 7000 8273 8273]
+
+[Rules]
+2 2, 2 (1) : 1
+1 1, 1 (1) : 1
+1 2, 1 (1) : 1
+2 1, 2 (1) : 1
